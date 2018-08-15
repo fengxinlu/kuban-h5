@@ -1,5 +1,5 @@
 var url_reset_password_token = getUrlParam('reset_password_token')
-var origin_request = 'https://api.cl-sg-dev.kuban.io'//document.location.origin
+var origin_request = document.location.origin
 var sharingUrl = origin_request + '/managements/v2/passwords/reset'
 
 
