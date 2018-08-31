@@ -1,0 +1,94 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #4E5356;
+}
+a,img,button,input,textarea,div{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0;font-weight: normal}
+
+button:focus{
+    outline:0;
+}
+
+.kb-container{
+    padding: 10px;
+}
+
+.kb-section{
+    padding: 12px 0;
+    border-bottom: 1px solid #D2D2D2;
+}
+
+.kb-title{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.kb-item{
+    margin-bottom: 3px;
+}
+
+.kb-item >span:first-child{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.kb-item >span:last-child{
+    font-size: 12px;
+}
+
+.kb-second-title{
+    padding-top: 18px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.billing-content >div{
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.payment-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.total-amount{
+    background-color: #E9FBED;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.total-amount >span:last-child{
+    font-size: 18px;
+}
+
+.kb-hint{
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.btn-box{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn-box button{
+    width:89px;
+    height:29px;
+    background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(216,216,216,1) 100%);
+    box-shadow:0px 1px 1px 0px rgba(0,0,0,0.5);
+    border-radius:3px;
+    border:1px solid rgba(204,204,204,1);
+}
