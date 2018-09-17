@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <title>Kuban</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1"/>
-    <link rel="stylesheet" href="index.css">
-    <script type="text/javascript" src="js/zepto.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <meta name="author" content="Shanghai Kuyi Technology Ltd">
+    <meta name="apple-itunes-app" content="app-id=544007664">
+    <meta name="google-play-app" content="app-id=com.google.android.youtube">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/jquery.smartbanner.css">
 </head>
 <body>
     <div class="kb-container">
         <header class="kb-header">
-            <img src="https://media-ssl.kuban.io/static/web/v1/images/logo-b.svg" style="height: 40px;">
+            <img src="https://media-ssl.kuban.io/kade/static/images/capitastar_logo.png" style="height: 40px;">
         </header>
         <div class="kb-content">
             <div class="kb-error">
@@ -23,11 +25,11 @@
                 <div class="form-header">Reset Password</div>
                 <div class="form-content">
                     <div class='form-input'>
-                        <input type="text" placeholder="New password" class="new-password">
+                        <input type="password" placeholder="New password" class="new-password">
                         <div class="form-error new-password-error"></div>
                     </div>
                     <div class='form-input'>
-                        <input type="text" placeholder="Confirm password" class="confirm-password">
+                        <input type="password" placeholder="Confirm password" class="confirm-password">
                         <div class="form-error confirm-password-error"></div>
                     </div>
                     <div class="submit-btn">Submit</div>
@@ -37,11 +39,41 @@
                 <img src="./images/success.png">
                 <div class="title">Successfully reset password</div>
                 <div class="description">Congratulations on your password reset, now you can enter your new password to log in to the app.</div>
+                <div class="download-btns">
+                    <a href="https://www.google.com/" class="google-play">
+                        <img src="https://media-ssl.kuban.io/kade/static/images/google_play.png">
+                        <div style="text-align: left">
+                            <div style="font-size: 12px; font-weight: 300">GET IT ON</div>
+                            <div>Google Play</div>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/" class="app-store">
+                        <img src="https://media-ssl.kuban.io/kade/static/images/app_store.png">
+                        <div style="text-align: left">
+                            <div style="font-size: 12px; font-weight: 300">Download on the</div>
+                            <div>App Store</div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="kb-footer">
             <div>沪ICP备16024831号</div>
         </div>
     </div>
+
+    <script src="https://media-ssl.kuban.io/static/js/jquery.min.v3.2.1.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="./js/jquery.smartbanner.js"></script>
+    <script>
+        $(function() {
+            $.smartbanner({
+                daysHidden: 0,
+                daysReminder: 0,
+                title:'CapitaStar@WORK',
+                icon: 'https://media-ssl.kuban.io/kade/static/images/capitastar_logo.png'
+            });
+        });
+    </script>
 </body>
 </html>

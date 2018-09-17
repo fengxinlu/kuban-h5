@@ -201,6 +201,32 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     text-align: center;
 }
 
+.download-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.google-play, .app-store{
+    background-color: #040404;
+    width: 168px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin-left: 12px;
+    margin-right: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    justify-content: center;
+    padding: 6px 0;
+}
+
+.google-play >img, .app-store >img{
+    width: 18px;
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 320px) {
     .form-container, .kb-success{
         width: 300px;

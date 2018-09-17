@@ -1,8 +1,9 @@
 var url_reset_password_token = getUrlParam('reset_password_token')
 var origin_request = document.location.origin
 var sharingUrl = origin_request + '/managements/v2/passwords/reset'
-
-
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
 $(function(){
     var newPasswordInput = $('.new-password')
@@ -15,6 +16,16 @@ $(function(){
     var closeError = $('.close-error')
     var kbSuccess = $('.kb-success')
     var submitBtn = $('.submit-btn')
+    var googlePlay = $('.google-play')
+    var appStore = $('.app-store')
+
+    if(isAndroid){
+        appStore.css({display: 'none'})
+    }
+
+    if(isiOS){
+        googlePlay.css({display: 'none'})
+    }
 
     submitBtn.on('click', function() {
         var newPasswordVal = newPasswordInput.val()
