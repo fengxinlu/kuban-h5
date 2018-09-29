@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+        <title>确认订单</title>
+    </head>
+    <style>
+        body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select{ margin:0;padding:0; }
+        body{
+          font-size: 14px;
+          color: #333;
+          font-family: "PingFang SC";
+        }
+        .banner{
+          width: 100%;
+        }
+        .banner img{
+          width: 100%;
+          height: auto;
+        }
+        .orderContent{
+          padding: 20px;
+          margin-bottom: 50px;
+        }
+        .orderItem{
+          margin-bottom: 22px;
+          padding-bottom: 28px;
+          border-bottom: 1px solid #DDDDDD;
+        }
+        .orderItem .title{
+          color: #333333;
+          font-size: 18px;
+          margin-bottom: 16px;
+          font-weight: bold;
+        }
+        .orderItem .content{
+          color: #666666;
+          font-size: 16px;
+        }
+        .payBtn{
+          border: none;
+          width: 100%;
+          padding: 14px 0;
+          font-size: 16px;
+          color: #ffffff;
+          background-color: #28C97C;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0
+        }
+    </style>
+    <body>
+        <section>
+            <div class="banner">
+            <img src="https://capitalanddiag583.blob.core.chinacloudapi.cn/media/images/meeting/the-spheres-is-foremost-a-building-for-amazon-employees.jpg">
+            </div>
+
+            <div class="orderContent">
+            <div class="orderItem">
+                <div class="title">订单内容</div>
+                <div class="content">CF101</div>
+            </div>
+            <div class="orderItem">
+              <div class="title">订单金额</div>
+              <div class="content">100.0</div>
+            </div>
+            <div class="orderItem">
+              <div class="title">订单描述</div>
+              <div class="content">CF101: 2018-07-29 09:00 - 2018-07-29 10:00</div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <form action="https://testsecureacceptance.cybersource.com/pay" method="post">
+                <input type="hidden" name="reference_number" value="907683153267390864"/>
+                <input type="hidden" name="amount" value="100.0"/>
+                <input type="hidden" name="transaction_type" value="sale"/>
+                <input type="hidden" name="currency" value="USD"/>
+                <input type="hidden" name="transaction_uuid" value="ab4731214177744b7380607c631bc5f9"/>
+                <input type="hidden" name="access_key" value="57e6329260523c45bc69a5d1318183ef"/>
+                <input type="hidden" name="profile_id" value="83BCBD4F-0843-466D-952B-F2DF3C4047DF"/>
+                <input type="hidden" name="signed_date_time" value="2018-07-27T07:40:59Z"/>
+                <input type="hidden" name="signed_field_names" value="access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency"/>
+                <input type="hidden" name="unsigned_field_names" value=""/>
+                <input type="hidden" name="locale" value="zh-CN"/>
+                <input type="hidden" name="signature" value="9esYGDFCujLWITinhmw74YcHXhsX2DRz5aGblimmen4="/>
+                <button type="submit" class="payBtn">
+                    Pay
+                </button>
+            </form>
+        </section>
+    </body>
+    <script>
+        window.onload = function () {
+            var payBtn = document.querySelector('.payBtn')
+            payBtn.onclick = function () {
+                payBtn.style.opacity = 0.6
+                payBtn.style.outline = 0
+                payBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 120 30" fill="#fff" style="margin-left: auto; margin-right: auto;">' +
+                    '<circle cx="15" cy="15" r="11.3566">' +
+                        '<animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/>' +
+                        '<animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/>' +
+                    '</circle>' +
+                    '<circle cx="60" cy="15" r="12.6434" fill-opacity="0.3">' +
+                        '<animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/>' +
+                        '<animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/>' +
+                    '</circle>' +
+                    '<circle cx="105" cy="15" r="11.3566">' +
+                        '<animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/>' +
+                        '<animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/>' +
+                    '</circle>' +
+                '</svg>'
+            }
+        }
+    </script>
+</html>
