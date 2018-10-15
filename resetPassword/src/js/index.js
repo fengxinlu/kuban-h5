@@ -4,6 +4,7 @@ var sharingUrl = origin_request + '/managements/v2/passwords/reset'
 var u = navigator.userAgent;
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,}$/
 
 $(function(){
     var newPasswordInput = $('.new-password')
@@ -25,33 +26,70 @@ $(function(){
 
     if(isiOS){
         googlePlay.css({display: 'none'})
-    }
+	}
+	
+	newPasswordInput.on('keyup', function(e) {
+		var newPasswordVal = e.target.value
+
+		if(!newPasswordVal){
+			newPasswordInput.addClass('form-input-error')
+			newPasswordError.text('Please enter a new password')
+			return
+		} else {
+			newPasswordInput.removeClass('form-input-error')
+			newPasswordError.text('')
+		}
+		
+		if(!reg.test(newPasswordVal)) {
+			newPasswordInput.addClass('form-input-error')
+			newPasswordError.text('Password must be at least 8 characters, include 1 uppercase, 1 lowercase and 1 number.')
+			return
+		} else {
+			newPasswordInput.removeClass('form-input-error')
+			newPasswordError.text('')
+		}
+	})
+	
+	confirmPasswordInput.on('keyup', function(e) {
+		var confirmPasswordVal = e.target.value
+
+		if(!confirmPasswordVal){
+			confirmPasswordInput.addClass('form-input-error')
+			confirmPasswordError.text('Please enter a confirmation password')
+            return
+        } else {
+			confirmPasswordInput.removeClass('form-input-error')
+			confirmPasswordError.text('')
+		}
+	})
 
     submitBtn.on('click', function() {
         var newPasswordVal = newPasswordInput.val()
         var confirmPasswordVal = confirmPasswordInput.val()
         var errorTextStyle = { display: 'block' }
         var errorInputStyle = { borderColor: '#ff5a5f' }
-        var isDisabled = submitBtn.attr('disabled')
+		var isDisabled = submitBtn.attr('disabled')
 
         if(isDisabled){
             return
-        }
+		}
+		
+		if(!newPasswordVal){
+			newPasswordInput.addClass('form-input-error')
+			newPasswordError.text('Please enter a new password')
+			return
+		}
 
-        if(!newPasswordVal){
-            return showError('Please enter a new password')
-        }
-
-        if(!confirmPasswordVal){
-            return showError('Please enter a confirmation password')
-        }
-
-        if(newPasswordVal.length < 8 || confirmPasswordVal.length < 8){
-            return showError('Your password must contain at least 8 characters')
+		if(!confirmPasswordVal){
+			confirmPasswordInput.addClass('form-input-error')
+			confirmPasswordError.text('Please enter a confirmation password')
+            return
         }
 
         if(confirmPasswordVal != newPasswordVal){
-            return showError('Inconsistent entry password')
+			confirmPasswordInput.addClass('form-input-error')
+			confirmPasswordError.text('Passwords do not match, please enter again')
+            return
         }
 
         submitBtn.addClass('submitting')
