@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Billing Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag "email/invoice", media: 'all', 'data-turbolinks-track' => true  %>
+</head>
+<body>
+  <div class="page-container" >
+    <header class="sec-header" >
+      <div class="logo" >
+        <%= image_tag 'https://media-common.kuban.io/mail/invoice-mailer-logo.png', alt: 'Logo' %>
+      </div>
+      <div class="info" >
+        <div class="info-line" >HSBC Institutional Trust Services(Singapore) Limited</div>
+        <div class="info-line" >As Truseee of Capital Commercial Trust</div>
+        <div class="info-line" >168 Robinson Road</div>
+        <div class="info-line" >#03-01 Capital Tower</div>
+        <div class="info-line" >Singapore 068912</div>
+        <div class="info-line" >GST Regn No:M9-0008665-N</div>
+      </div>
+    </header>
+
+    <section class="sec-invoice" >
+		  <h3 class="text-align-center text-bold text-underline" >PROFORMA INVOICE</h3>
+		  <div class="invoice-overview" >
+		    <div class="view-line" >
+		      <span class="label" >Serial No:</span>
+		      <span class="value" ><%= @invoice.serial_number %></span>
+		    </div>
+		    <div class="view-line" >
+		      <span class="label" >Date of Issue:</span>
+		      <span class="value" ><%= @invoice.due_date %></span>
+		    </div>
+		    <div class="view-line" >
+		      <span class="label" >Company:</span>
+		      <span class="value" ><%= @company_name %></span>
+		    </div>
+		    <div class="view-line" >
+		      <span class="label" >Address:</span>
+		      <span class="value" ><%= @invoice.location.physical_address %></span>
+		    </div>
+		    <div class="view-line" >
+		      <span class="label" >Attention:</span>
+		      <span class="value text-underline" ><%= @user.try(:name) %></span>
+		    </div>
+		    <div class="view-line" >
+		      <span class="label" >Tel:</span>
+		      <span class="value text-underline" ><%=  @user.try(:phone_num) %></span>
+		    </div>
+		  </div>
+		  <div class="invoice-table" >
+		    <table>
+		      <thead>
+		        <tr>
+		          <th>DESCRIPTION</th>
+		          <th>DURATION</th>
+		          <th>RATE</th>
+		          <th>GST TAX</th>
+		          <th class="text-align-right" >AMOUNT PAYABLE</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <% @invoice.sales_invoice_line_items.each do |item| %>
+		          <tr>
+		            <td><%= item.description %></td>
+		            <td><%= item.units %></td>
+		            <td><%= (item.total_amount - item.tax_amount) / item.units %></td>
+		            <td><%= item.tax_amount %></td>
+		            <td class="text-align-right" ><%= item.total_amount %></td>
+		          </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+		    <div class="invoice-sum" >
+		      <div class="sum-line">
+		        <span class="label" >Sub Total</span>
+		        S$
+		        <span class="value" ><%= @invoice.total_amount - @invoice.tax_amount %></span>
+		      </div>
+		      <div class="sum-line">
+		        <span class="label" >GST</span>
+		        S$
+		        <span class="value" ><%= @invoice.tax_amount %></span>
+		      </div>
+		      <div class="sum-line">
+		        <span class="label" >Total</span>
+		        S$
+		        <span class="value" ><%= @invoice.total_amount %></span>
+		      </div>
+
+		      <% if @invoice.paid? %>
+		        <div>Paid At <%= @invoice.paid_at&.to_date %></div>
+		      <% else %>
+		        <div>Not Paid</div>
+		      <% end %>
+		    </div>
+		  </div>
+		</section>
+    
+    <section class="sec-note" >
+      <h2 class="text-underline" >NOTE:</h2>
+      <ul>
+        <li>Cheque is to be crossed and made payable to: <span class="text-bold" >HTSG - CAPITACOM CT COLL</span></li>
+        <li>Full Payment has to be made by date stated, failling which, the Management of Capital Tower reserves the right not to open the permises for user.</li>
+        <li>Charges will be differ if there's any last minutes extension of room, AV services of additional equipment.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
