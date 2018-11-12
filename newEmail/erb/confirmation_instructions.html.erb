@@ -75,45 +75,45 @@
             <td></td>
         </tr>
     </tbody>
+    <script>
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        window.onload=function(){
+            var googlePlay = document.querySelector('.google-play')
+            var appStore = document.querySelector('.app-store')
+            var rounded = document.querySelector('.rounded')
+            var downloadBtns = document.querySelector('.download-btns')
+            var layoutTable = document.querySelector('.layout-table')
+            var kbContent = document.querySelector('.kb-content')
+            var defaultImg1 = document.querySelector('.default-img-1')
+            var defaultImg2 = document.querySelector('.default-img-2')
+
+            if(isAndroid){
+                appStore.style.display = 'none'
+            }
+
+            if(isiOS){
+                googlePlay.style.display = 'none'
+            }
+
+            if (window.PIE) {
+                rounded.each(function() {
+                    PIE.attach(this);
+                });
+            }
+            if(isAndroid || isiOS){
+                downloadBtns.style.tableLayout = 'auto'
+                layoutTable.style.tableLayout = 'auto'
+                defaultImg1.style.display = 'none'
+                defaultImg2.style.display = 'none'
+                kbContent.style.padding = 0
+                kbContent.style.marginLeft = 0
+                kbContent.style.marginRight = 0
+            }
+        }
+    </script>
 </table>
-<script>
-    var u = navigator.userAgent;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-
-    window.onload=function(){
-        var googlePlay = document.querySelector('.google-play')
-        var appStore = document.querySelector('.app-store')
-        var rounded = document.querySelector('.rounded')
-        var downloadBtns = document.querySelector('.download-btns')
-        var layoutTable = document.querySelector('.layout-table')
-        var kbContent = document.querySelector('.kb-content')
-        var defaultImg1 = document.querySelector('.default-img-1')
-        var defaultImg2 = document.querySelector('.default-img-2')
-
-        if(isAndroid){
-            appStore.style.display = 'none'
-        }
-
-        if(isiOS){
-            googlePlay.style.display = 'none'
-        }
-
-        if (window.PIE) {
-            rounded.each(function() {
-                PIE.attach(this);
-            });
-        }
-        if(isAndroid || isiOS){
-            downloadBtns.style.tableLayout = 'auto'
-            layoutTable.style.tableLayout = 'auto'
-            defaultImg1.style.display = 'none'
-            defaultImg2.style.display = 'none'
-            kbContent.style.padding = 0
-            kbContent.style.marginLeft = 0
-            kbContent.style.marginRight = 0
-        }
-    }
-</script>
 </body>
 </html>
