@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%; height: 100%; font-size: 14px; color: #484848; background-color: #ffffff;">
+<head>
+    <meta charset="UTF-8">
+    <title>CapitaLand</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+</head>
+<body style="width: 100%; height: 100%; font-size: 14px; color: #484848; background-color: #ffffff; margin: 0; padding: 0; font-weight: normal;">
+    <div style="width: 860px; margin-left: auto; margin-right: auto; padding: 30px; background-color: #ffffff;">
+        <div style="display: flex; justify-content: space-between;">
+            <img style="height: 86px;" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/CapitaLand_Logo.svg">
+            <div>
+                <p style="margin-top: 0; margin-bottom: 3px;">Issued on behalf of</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">HSBC Institutional Trust Services(Singapore) Limited</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">As Trustee of CapitaLand Commercial Trust</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">168 Robinson Road</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">#03-01 Capital Tower</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">Singapore 068912</p>
+                <p style="margin-top: 0; margin-bottom: 3px;">GST Registration No:M9-0008665-N</p>
+            </div>
+        </div>
+        <div style="font-size: 22px; font-weight: bold; margin-top: 60px; margin-bottom: 35px; color: #000000; text-align: center;">
+            *** TAX INVOICE / RECEIPT ***
+        </div>
+        <div>
+            <div style="margin-bottom: 3px; font-size: 12px;">
+                <span style="display: inline-block; width: 200px;
+">Tax Invoice No.</span>
+                <span style="text-decoration: underline;"><%= @invoice.serial_number %></span>
+            </div>
+            <div style="margin-bottom: 3px; font-size: 12px;">
+                <span style="display: inline-block; width: 200px;
+">Tax Invoice Date:</span>
+                <span style="text-decoration: underline;"><%= @invoice.due_date %></span>
+            </div>
+            <div style="margin-bottom: 3px; font-size: 12px;">
+                <span style="display: inline-block; width: 200px;
+">Company:</span>
+                <span style="text-decoration: underline;"><%= @company_name %></span>
+            </div>
+            <div style="margin-bottom: 3px; font-size: 12px;">
+                <span style="display: inline-block; width: 200px;
+">Page:</span>
+                <span style="text-decoration: underline;">1 of 1</span>
+            </div>
+        </div>
+        <div style="margin-top: 30px;margin-bottom: 5px;text-align: right">Currency: SGD</div>
+        <table style="width: 100%;border-collapse: collapse">
+            <thead>
+                <tr>
+                    <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;">Description</th>
+                    <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;">Quantity</th>
+                    <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;">Unit Price</th>
+                    <th style="border-top: 1px solid #000000; border-bottom: 1px solid #000000;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @invoice.sales_invoice_line_items.each do |item| %>
+                    <tr>
+                        <td style="text-align: center;padding: 20px 0;"><%= item.description %></td>
+                        <td style="text-align: center;padding: 0 20px;"><%= item.units %></td>
+                        <td style="text-align: center;padding: 0 20px;"><%= (item.total_amount - item.tax_amount) / item.units %></td>
+                        <td style="text-align: center;padding: 0 20px;"><%= item.total_amount - item.tax_amount %></td>
+                    </tr>                    
+                <% end %>
+            </tbody>
+        </table>
+        <div style="overflow: hidden">
+            <div style="margin-top: 45px;width: 40%; float: right;">
+                <div style="margin-bottom: 3px; font-size: 12px; overflow: hidden;">
+                    <div style="width: 50%; display: inline-block; float: left;">Supplies Payable</div>
+                    <div style="width: 50%; text-align: right; display: inline-block; float: left;">S$<%= @invoice.total_amount - @invoice.tax_amount %></div>
+                </div>
+                <div style="margin-bottom: 3px; font-size: 12px; overflow: hidden;">
+                    <div style="width: 50%; display: inline-block; float: left;">GST @ 7.00%</div>
+                    <div style="width: 50%; text-align: right; display: inline-block; float: left;">S$<%= @invoice.tax_amount %></div>
+                </div>
+                <div style="margin-bottom: 3px; font-size: 12px; overflow: hidden;">
+                    <div style="width: 50%; display: inline-block; float: left;">Total Payable including GST</div>
+                    <div style="width: 50%; text-align: right; display: inline-block; float: left;">S$<%= @invoice.total_amount %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
