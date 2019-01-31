@@ -1,0 +1,144 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #1c1c1c;
+}
+a,img,button,input,textarea,div{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0;font-weight: normal}
+
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: .5px solid #E4E4E4;
+}
+
+.header img{
+    height: 40px;
+    width: auto;
+}
+
+.content{
+    flex: 1;
+}
+
+.resetForm{
+    width: 530px;
+    margin-top: 28px;
+    margin-left: auto;
+    margin-right: auto;
+    border: .5px solid #E4E4E4;
+    padding: 30px 24px;
+    border-radius: 6px;
+}
+
+.footer{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: .5px solid #E4E4E4;
+    color: #818386;
+    font-size: 14px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.tip{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.formItem{
+    margin-bottom: 15px;
+}
+
+.formItem label{
+    font-size: 16px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formInput{
+    border: .5px solid #E4E4E4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0 18px;
+}
+
+.formInput input {
+    flex: 1;
+    border: none;
+    height: 100%;
+    outline: none;
+    font-size: 16px;
+}
+
+.formItem .error_1, .formItem .error_2{
+    margin-top: 5px;
+    color: #FC642D;
+    font-size: 14px;
+    display: none;
+}
+
+.submitBtn{
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 4px;
+    background-color: #1FB7B6;
+    color: #ffffff;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.submitting{
+    opacity: .5;
+}
+
+.successContent{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.successContent img{
+    width: 240px;
+    height: auto;
+}
+
+.successTitle{
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.successTip{
+    font-size: 16px;
+}
+
+@media screen and (max-width: 420px) {
+    .resetForm{
+        width: calc(100% - 48px);
+        border: none;
+    }
+}

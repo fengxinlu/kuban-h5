@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1"/>
+    <title>设置新密码</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="./js/zepto.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://media-ssl.kuban.io/static/web/v1/images/logo-b.svg">
+        </header>
+        <section class="content">
+            <div class="resetForm">
+                <div class="title">重置密码</div>
+                <div class="tip">密码必须大于或等于6位</div>
+                <div class="formItem">
+                    <label>密码</label>
+                    <div class="formInput">
+                        <input type="text" class="newPassword" placeholder="请输入密码"/>
+                        <img src="./static/passcode.svg">
+                    </div>
+                    <div class="error_1"></div>
+                </div>
+                <div class="formItem">
+                    <label>确认密码</label>
+                    <div class="formInput">
+                        <input type="text" class="confirmPassword" placeholder="请输入确认密码"/>
+                        <img src="./static/passcode.svg">
+                    </div>
+                    <div class="error_2"></div>
+                </div>
+                <div class="submitBtn">提交</div>
+            </div>
+            <div class="successContent">
+                <img src="./static/success.png">
+                <div class="successTitle">重置密码成功</div>
+                <div class="successTip">请打开酷办APP使用新密码重新登录</div>
+            </div>
+        </section>
+        <footer class="footer">
+            <span>沪ICP备16024831号</span>
+        </footer>
+    </div>
+</body>
+</html>
